@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesion4_TallerInnovacion</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; color: #333; line-height: 1.6; }
+        .container { max-width: 1000px; margin: auto; padding: 20px; }
+        .header { background-color: #2196F3; color: white; text-align: center; padding: 10px; } /* Color de acento azul */
+        .activity, .overview { margin-bottom: 20px; }
+        .banner {
+            background-color: #2196F3; /* Color de acento azul */
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .content { display: none; padding: 10px; border: 1px solid #ddd; margin-bottom: 10px; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+             background-color: #f9f9f9;
+        }
+        span[style*="color: red;"] {
+            font-weight: bold;
+        }
+        ul { margin-top: 0; padding-left: 20px; }
+        li { margin-bottom: 5px; }
+        hr.divider { border: none; border-top: 1px solid #e0e0e0; margin: 5px 0; }
+        .subtitle { margin-top: 5px; font-size: 0.9em; color: #e0e0e0; }
+        .time-title { margin-top: 0; margin-bottom: 20px; font-size: 1.2em; color: #555; text-align: center;}
+    </style>
+    <script>
+        function toggleContent(id) {
+            const content = document.getElementById(id);
+            if (content) {
+                content.style.display = content.style.display === "none" ? "block" : "none";
+            }
+        }
+
+        window.onload = () => {
+             // Optional: Keep all content visible initially
+             // document.querySelectorAll('.content').forEach(el => el.style.display = 'block');
+        };
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h1>Taller: ¡Misión Posible! 1.3 - Robótica al Rescate del Planeta (Sesión 4)</h1>
+    </div>
+    <div class="container">
+        <h2 class="time-title">Tiempo Total Estimado: 40 minutos</h2>
+
+        <!-- De un Vistazo -->
+        <div id="overview-section" class="overview" data-time="N/A">
+             <div class="banner" onclick="toggleContent('overview_content')">
+                 <div class="title">📝 De un Vistazo: Sesión 4</div>
+                  <hr class="divider">
+                 <div class="subtitle">Resumen rápido de objetivos, materiales y preparación para el facilitador.</div>
+             </div>
+             <div id="overview_content" class="content">
+                 <table>
+                     <tr>
+                         <th style="width: 50%;">Objetivos, Tácticas y Entregable</th>
+                         <th style="width: 50%;">Materiales Específicos y Preparación Previa</th>
+                     </tr>
+                     <tr>
+                         <td>
+                            <strong>Objetivos:</strong>
+                            <ul>
+                                <li>Seleccionar la idea final de robot héroe a prototipar por equipo.</li>
+                                <li><span style='color: red; font-weight: bold;'>Táctica 5:</span> Crear un prototipo conceptual en papel que simule el funcionamiento paso a paso del robot ("Be The Algorithm"). Definir la secuencia lógica (algoritmo) de acciones del robot.</li>
+                                <li><span style='color: red; font-weight: bold;'>Táctica 6:</span> Presentar los prototipos conceptuales ("Show & Tell Robótico"). Dar y recibir retroalimentación final usando Like, Wish, Wonder.</li>
+                                <li>Cerrar el taller motivando para la construcción real con Cutebot/Micro:bit.</li>
+                             </ul>
+                            <strong>Tácticas Principales:</strong>
+                            <ul>
+                                <li><span style='color: red; font-weight: bold;'>Be The Algorithm</span> (Prototipo Conceptual en Papel).</li>
+                                <li><span style='color: red; font-weight: bold;'>Show & Tell Robótico</span> + Like, Wish, Wonder.</li>
+                            </ul>
+                            <strong>Entregable Clave:</strong>
+                            <ul>
+                                <li>Prototipo Conceptual en Papel/Digital (simulación paso a paso del algoritmo del robot) por equipo.</li>
+                                <li>Notas LWW recibidas.</li>
+                            </ul>
+                         </td>
+                         <td>
+                            <strong>Materiales Específicos:</strong>
+                            <ul>
+                                <li>Proyector o pantalla interactiva.</li>
+                                <li>Presentación de diapositivas (Diapositivas 21-26 detalladas abajo).</li>
+                                <li>Acceso a tablero Miro (o similar) con las ideas refinadas de la Sesión 3 visibles y espacio para "Be The Algorithm", O rotafolios/papel grande.</li>
+                                <li>Papel, lápices, marcadores, colores, figuritas de papel o piezas tipo Lego (opcional, para simular el robot).</li>
+                                <li>Notas adhesivas pequeñas (físicas o digitales) para LWW.</li>
+                                <li>Ejemplo "BeBot" para Be The Algorithm y Show & Tell (Diapositivas 23 y 25/26).</li>
+                            </ul>
+                             <strong>Preparación Previa para ESTA Sesión:</strong>
+                             <ol>
+                                 <li><strong>Presentación Lista:</strong> Tener listas las Diapositivas 21 a 26. Preparar el ejemplo detallado de "Be The Algorithm" para BeBot y el ejemplo de pitch/LWW.</li>
+                                 <li><strong>Espacio de Trabajo:</strong> Equipos deben tener acceso a sus ideas refinadas. Preparar espacio amplio (digital o físico) para la simulación "Be The Algorithm".</li>
+                                 <li><strong>Material Simulación (Opcional):</strong> Si es físico, tener papel grande, marcadores, y quizás figuritas/piezas para representar al robot y los elementos del entorno (basura, obstáculos).</li>
+                                 <li><strong>Material Retro LWW:</strong> Notas adhesivas y Lámina 25 con instrucciones LWW.</li>
+                             </ol>
+                         </td>
+                     </tr>
+                 </table>
+             </div>
+         </div>
+
+        <!-- Actividad 1: Recapitulación y Selección Final -->
+        <div id="activity-1" class="activity" data-time="5">
+            <div class="banner" onclick="toggleContent('activity_1_content')">
+                <div class="title">⏪ Actividad 1: Recapitulación y Selección Final ⏰ Tiempo: 5 minutos</div>
+                <hr class="divider">
+                <div class="subtitle">Recordar logros y elegir la idea final a prototipar.</div>
+            </div>
+            <div id="activity_1_content" class="content">
+                <table>
+                    <tr>
+                        <th style="width: 50%;">Acción</th>
+                        <th style="width: 50%;">Diálogo Maestro</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Paso 1:</strong> Proyectar Diapositiva 21.
+                        </td>
+                        <td>
+                            "¡Agentes robóticos a punto de la victoria, bienvenidos a la sesión final de 'Misión Posible'! 🏆 En la sesión anterior, presentaron sus ideas más prometedoras y recibieron feedback genial con Likes y Wishes. ¡Sus conceptos de robots héroes son fantásticos!"
+                            <br><br>
+                            "Hoy, vamos a hacer dos cosas cruciales: Primero, como equipo, deben elegir <span style='color: red; font-weight: bold;'>UNA SOLA IDEA</span> de robot héroe, ¡la <span style='color: red; font-weight: bold;'>MEJOR</span> de todas, la que van a prototipar! Y segundo, ¡vamos a crear su <span style='color: red; font-weight: bold;'>Plan Secreto de Acción</span> en papel, simulando cómo funcionará!"
+                            <br><br>
+                            "Miren sus ideas refinadas y el feedback. ¡Decidan ahora cuál será su robot héroe final!"
+                            <br><br>
+                            <em>(Dar 2-3 minutos para la decisión final del equipo. Deben tener clara la idea que van a desarrollar).</em>
+                            <br><br>
+                             "¿Listo, equipo? ¡Excelente elección! Ahora, prepárense para darle vida... en papel."
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Actividad 2: Táctica 5: Be The Algorithm -->
+        <div id="activity-2" class="activity" data-time="15">
+            <div class="banner" onclick="toggleContent('activity_2_content')">
+                <div class="title">⚙️ Actividad 2: Táctica 5: Be The Algorithm (Prototipo Conceptual en Papel) - ¡Simulando la Misión Robótica! ⏰ Tiempo: 15 minutos</div>
+                <hr class="divider">
+                <div class="subtitle">Crear un prototipo en papel simulando el funcionamiento paso a paso del robot.</div>
+            </div>
+            <div id="activity_2_content" class="content">
+                <table>
+                    <tr>
+                        <th style="width: 50%;">Acción</th>
+                        <th style="width: 50%;">Diálogo Maestro</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Paso 1 (3 min):</strong> Proyectar Diapositiva 22. Explicar la Táctica 5 y sus elementos clave.
+                        </td>
+                        <td>
+                            "¡Agentes, ahora la táctica más divertida: <span style='color: red; font-weight: bold;'>'Be The Algorithm'</span> (Ser el Algoritmo)! Vamos a fingir que nosotros SOMOS el cerebro y el cuerpo de nuestro robot héroe, ¡pero en papel!" 🧠📄🤖
+                            <br><br>
+                            "¡Simulemos! <br> 1. Dibujen el <span style='color: red; font-weight: bold;'>escenario</span> (playa, bosque...). <br> 2. ¡Ustedes son el robot! Decidan y anoten/dibujen los <span style='color: red; font-weight: bold;'>pasos</span> que sigue. Piensen en las acciones clave de su robot héroe:"
+                             <ul>
+                                 <li><strong>Navegación:</strong> ¿Cómo se moverá? ¿Usará sensores (línea, ultrasónico) para evitar obstáculos? Simulen sus movimientos en papel (flechas, camino dibujado).</li>
+                                 <li><strong>Detección del Problema:</strong> ¿Cómo detectará el problema ambiental? (Basura, contaminación, árbol caído...). Definan una "regla" clara para la detección (Ej: "Si sensor color ve azul (basura)...", "Si sensor distancia < 15cm...").</li>
+                                 <li><strong>Acción para Resolver:</strong> ¿Qué acción CONCRETA hará? (Recoger basura, plantar árbol, limpiar agua...). Simulen esa acción (dibujo, figurita moviéndose).</li>
+                                 <li><strong>Almacenamiento/Resultado:</strong> ¿Qué pasará con lo que recoja/genere? (¿Basura a un contenedor? ¿Árbol plantado?). Simulen el "resultado final".</li>
+                                 <li><strong>Anoten su algoritmo visual:</strong> Hagan en Miró (o papel) el viaje/flujo de su robot con la descripción del proceso, como en el ejemplo que veremos.</li>
+                             </ul>
+                         </td>
+                    </tr>
+                    <tr>
+                        <td>
+                             <strong>Paso 2 (10 min):</strong> Facilitar el diseño del prototipo conceptual y el algoritmo visual.
+                         </td>
+                         <td>
+                             "¡Manos a la obra, agentes-robots! Dibujen rápido en su papel grande o Miro el <span style='color: red; font-weight: bold;'>escenario</span> donde trabajará su robot (playa, bosque...) y pongan el problema (basura, árbol caído...)."
+                              <br><br>
+                             "Ahora, ¡ustedes son el robot! Usen un dedo, una figura, un dibujo. Decidan los <span style='color: red; font-weight: bold;'>PASOS EXACTOS</span> que seguiría su robot para cumplir su misión. ¡Escríbanlos o dibújenlos como un plan secreto! Piensen:"
+                              <br>
+                              "1. ¿Cómo <span style='color: red; font-weight: bold;'>empieza</span>? (¿Alguien le da 'play'?). <br> 2. ¿Cómo se <span style='color: red; font-weight: bold;'>MUEVE</span>? (¿Sigue línea? ¿Esquiva con sensor?). <br> 3. ¿Qué <span style='color: red; font-weight: bold;'>DETECTA</span>? (¿Basura? ¿Árbol? ¿Con qué sensor?). <br> 4. ¿Qué <span style='color: red; font-weight: bold;'>ACCIÓN HACE</span> cuando detecta algo? (¿Activa pinza? ¿Suelta agua? ¿Envía señal?). <br> 5. ¿Cómo <span style='color: red; font-weight: bold;'>TERMINA</span> o repite?"
+                              <br><br>
+                             "¡Definan el <span style='color: red; font-weight: bold;'>'algoritmo'</span>, la secuencia de pasos de su robot! ¡Sean los programadores en papel!"
+                             <br><br>
+                             <em>(Circular y ayudar mucho en esta fase. Es clave que definan una secuencia lógica de acciones basada en sensores/condiciones simples, pensando en Cutebot/Micro:bit. Ayudarles a simplificar si es necesario).</em>
+                         </td>
+                     </tr>
+                     <tr>
+                         <td>
+                             <strong>Paso 3 (2 min):</strong> Proyectar Diapositiva 23. Mostrar y explicar el ejemplo de algoritmo de BeBot.
+                         </td>
+                         <td>
+                             "Miren el ejemplo del algoritmo de <span style='color: red; font-weight: bold;'>BeBot</span> en la Diapositiva 23. ¡Decidieron paso a paso cómo se movería, qué detectaría con sus sensores (obstáculo con ultrasónico, basura azul con sensor de color) y qué haría (girar, activar pinza, recoger, dejar en contenedor)! Así de claro debe ser su plan secreto. ¡Ahora definan el suyo!"
+                              <br><br>
+                             <em>(Asegurarse de que los equipos tengan una representación visual o escrita de su algoritmo/prototipo conceptual).</em>
+                              <br><br>
+                             <strong>Entregable:</strong> Prototipo Conceptual en Papel/Digital (Diagrama de flujo simple o secuencia de pasos ilustrada del algoritmo del robot) por equipo.
+                         </td>
+                     </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Actividad 3: Táctica 6: Show & Tell Robótico + Retro LWW -->
+         <div id="activity-3" class="activity" data-time="15">
+             <div class="banner" onclick="toggleContent('activity_3_content')">
+                 <div class="title">🚀 Actividad 3: Táctica 6: Show & Tell Robótico + Retro LWW - ¡Lanzamiento Conceptual! ⏰ Tiempo: 15 minutos</div>
+                 <hr class="divider">
+                 <div class="subtitle">Presentar prototipos conceptuales y recibir feedback final (Like, Wish, Wonder).</div>
+             </div>
+             <div id="activity_3_content" class="content">
+                 <table>
+                     <tr>
+                         <th style="width: 50%;">Acción</th>
+                         <th style="width: 50%;">Diálogo Maestro</th>
+                     </tr>
+                     <tr>
+                         <td>
+                             <strong>Paso 1 (2 min):</strong> Proyectar Diapositiva 24. Explicar el Show & Tell Robótico y la estructura de presentación.
+                         </td>
+                         <td>
+                             "¡Agentes, llegó el momento cumbre! ¡El <span style='color: red; font-weight: bold;'>'Show & Tell Robótico'</span>! Van a presentar su Prototipo Conceptual, ¡su algoritmo secreto en papel! Tienen <span style='color: red; font-weight: bold;'>2 minutos</span> para mostrar su diagrama/dibujo y explicar paso a paso cómo funciona su robot héroe para cumplir su misión."
+                              <br><br>
+                             "Mientras tanto, los otros equipos preparan su retroalimentación final usando <span style='color: red; font-weight: bold;'>Like 👍, Wish 🙏, Wonder 🤔</span>."
+                              <br><br>
+                             "¿Qué debe incluir su presentación de 2 minutos?"
+                              <ul>
+                                  <li><strong>1. ¿Quiénes son?</strong> ¿Cómo se llama su equipo?</li>
+                                  <li><strong>2. ¿Cómo se llama su Robot?</strong></li>
+                                  <li><strong>3. ¿Qué hace?</strong> (Idea principal y características únicas).</li>
+                                  <li><strong>4. ¿Cómo funciona?</strong> (¡Muestren su 'Be the Algorithm'! Expliquen los pasos clave del diagrama/plan que crearon).</li>
+                              </ul>
+                         </td>
+                     </tr>
+                     <tr>
+                         <td>
+                             <strong>Paso 2 (10 min):</strong> Facilitar las presentaciones (2 min por equipo) y la recogida de feedback LWW. Proyectar Diapositiva 25.
+                         </td>
+                         <td>
+                             "¡Equipo 1, al escenario! ¡Presenten su plan maestro!"
+                              <br><br>
+                             <em>(Gestionar presentaciones de 2 minutos por equipo. Mientras un equipo presenta, los demás escuchan atentamente y preparan su feedback LWW en notas adhesivas o Miro).</em>
+                              <br><br>
+                             "Recuerden ser buenos agentes dando feedback útil y amable (Diapositiva 25):"
+                              <ul>
+                                  <li><strong>👍 LIKE:</strong> "Me gustó que tu robot usa el sensor [X] para..."</li>
+                                  <li><strong>🙏 WISH:</strong> "Ojalá tu robot también pudiera [hacer otra acción simple]..."</li>
+                                  <li><strong>🤔 WONDER:</strong> "Me pregunto si tu robot podría funcionar con [otro tipo de energía]..." / Me pregunto cómo [resolvería X situación]..."</li>
+                              </ul>
+                             "Al final de cada presentación, entreguen (o peguen en Miro) sus notas LWW al equipo que presentó."
+                              <br><br>
+                             <em>(Rotar equipos hasta que todos presenten).</em>
+                         </td>
+                     </tr>
+                     <tr>
+                         <td>
+                            <strong>Paso 3 (3 min):</strong> (Opcional) Proyectar Diapositiva 26. Mostrar ejemplo de Pitch BeBot y LWW.
+                         </td>
+                          <td>
+                             <em>(Si el tiempo lo permite y se considera útil, mostrar brevemente la Diapositiva 26).</em>
+                             "Miren rápidamente el ejemplo de <span style='color: red; font-weight: bold;'>BeBot</span> (Diapositiva 26). Así estructuraron su pitch: 1. Equipo, 2. Nombre Robot, 3. Problema, 4. Especial por qué, 5. ¡Mira cómo funciona! (simulación), 6. Impacto final."
+                             <br>
+                             "Y aquí ven ejemplos del feedback LWW que podrían haber recibido: <span style='color: red; font-weight: bold;'>Like:</span> Nombre creativo, Conexión con Sofía. <span style='color: red; font-weight: bold;'>Wish:</span> Explicar materiales, Más interacción. <span style='color: red; font-weight: bold;'>Wonder:</span> ¿Sensores para otros tipos de basura? ¿Probar con robot real?"
+                              <br><br>
+                             <strong>Entregable:</strong> Prototipos conceptuales (algoritmos) presentados. Notas LWW recibidas por cada equipo.
+                          </td>
+                     </tr>
+                 </table>
+             </div>
+         </div>
+
+        <!-- Actividad 4: Cierre Épico -->
+        <div id="activity-4" class="activity" data-time="2">
+            <div class="banner" onclick="toggleContent('activity_4_content')">
+                <div class="title">🎉 Actividad 4: Cierre Épico: ¡Misión Cumplida, Futuro Robótico en Marcha! ⏰ Tiempo: 2 minutos</div>
+                <hr class="divider">
+                <div class="subtitle">Celebrar los logros y motivar la construcción real del robot.</div>
+            </div>
+            <div id="activity_4_content" class="content">
+                <table>
+                    <tr>
+                        <th style="width: 50%;">Acción</th>
+                        <th style="width: 50%;">Diálogo Maestro</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Paso 1:</strong> Proyectar Diapositiva 27. Realizar el cierre motivacional final.
+                        </td>
+                        <td>
+                            "¡¡¡AGENTES DE CAMBIO, LO HAN LOGRADO!!! ¡Han completado 'Misión Posible' con éxito! 🏅🏆 Tienen Prototipos Conceptuales increíbles, ¡los planos secretos para construir sus robots héroes!"
+                             <br><br>
+                             "Han definido una misión, empatizado, ideado, seleccionado, planeado paso a paso y presentado como verdaderos agentes de innovación. ¡Estoy increíblemente orgulloso de su ingenio y trabajo en equipo!"
+                              <br><br>
+                             "¿Siguiente paso? ¡Usar estos planos (su 'Be The Algorithm') y las ideas LWW para <span style='color: red; font-weight: bold;'>programar y construir sus robots héroes DE VERDAD con Cutebot y Micro:bit</span> en las próximas semanas!" 🚀🛠️
+                              <br><br>
+                             "¡El mundo necesita sus ideas y sus robots! ¡Felicidades, agentes!"
+                              <br><br>
+                             "¡Taller 'Misión Posible' finalizado! ¡Ahora, a la acción robótica!"
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+    </div> <!-- Cierre del container -->
+</body>
+</html>
